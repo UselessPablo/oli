@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/oli/static/css/main.75ec0816.css",
-    "main.js": "/oli/static/js/main.82589b3b.js",
+    "main.css": "/oli/static/css/main.e6c13ad2.css",
+    "main.js": "/oli/static/js/main.d1419179.js",
     "static/js/453.856ec09c.chunk.js": "/oli/static/js/453.856ec09c.chunk.js",
     "index.html": "/oli/index.html",
-    "main.75ec0816.css.map": "/oli/static/css/main.75ec0816.css.map",
-    "main.82589b3b.js.map": "/oli/static/js/main.82589b3b.js.map",
+    "main.e6c13ad2.css.map": "/oli/static/css/main.e6c13ad2.css.map",
+    "main.d1419179.js.map": "/oli/static/js/main.d1419179.js.map",
     "453.856ec09c.chunk.js.map": "/oli/static/js/453.856ec09c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.75ec0816.css",
-    "static/js/main.82589b3b.js"
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.d1419179.js"
   ]
 }
