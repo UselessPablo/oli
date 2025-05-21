@@ -1,33 +1,25 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+// App.js CORREGIDO
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
-import { ThemeProvider } from './context/ThemeContext';
 import Home from './Home';
-import Dashboard from './pages/Dashboard'; // Asegúrate de tener este componente
 import ProductManagement from './products/ProductManagement';
-import './App.css';
 import PrivateRoute from './Auth/PrivateRoute';
+import './App.css';
 
 function App() {
   return (
-    <Router>
-      <AuthProvider>
-        <ThemeProvider>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/dashboard" element={
-              <PrivateRoute>
-                <Dashboard />
-              </PrivateRoute>
-            } />
-            <Route path="/manage-products" element={
-              <PrivateRoute>
-                <ProductManagement />
-              </PrivateRoute>
-            } />
-          </Routes>
-        </ThemeProvider>
-      </AuthProvider>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/manage-products" element={
+            <PrivateRoute>
+              <ProductManagement /> {/* Cambiado de ProductForm a ProductManagement */}
+            </PrivateRoute>
+          } />
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 }
 

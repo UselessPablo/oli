@@ -1,44 +1,100 @@
-/* Estilos base */
-body {
-  transition: all 0.3s ease;
-}
-
-/* Tema claro */
-body.light {
-  background-color: #ffffff;
-  color: #333333;
-}
-
-/* Tema oscuro */
-body.dark {
-  background-color: #1a1a1a;
-  color: #f0f0f0;
-}
-
-/* Tema azul */
-body.blue {
-  background-color: #e6f2ff;
-  color: #003366;
-}
-
-/* Tema verde */
-body.green {
-  background-color: #e6ffe6;
-  color: #006600;
-}
 .home-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
 }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 30px;
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
 }
 
+.product-card {
+  border: 1px solid #e1e1e1;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 90%;
+  margin-left: 4%;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+
+
+.product-info {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.products-list{
+  display: flex;
+  justify-content: center;
+ flex-direction: column;
+ width: 98%;
+ 
+}
+
+.product-info h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.1rem;
+  color: #203b92;
+}
+.product-form{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  
+}
+.product-item {
+  border: solid 1px rgb(255, 255, 255);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 12px;
+  box-shadow: 2px 2px 2px 2px rgb(142, 142, 255);
+
+}
+
+.product-item img{
+  border-radius:14px ;
+  width: 60%;
+  height: 60%;
+  object-fit: cover;
+  margin: 6px;
+}
+
+
+.product-info .price {
+  font-weight: bold;
+  color: #2c3e50;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.loading {
+  text-align: center;
+  padding: 50px;
+  font-size: 1.2rem;
+}
+
+.error {
+  color: #e74c3c;
+  text-align: center;
+  padding: 50px;
+  font-size: 1.2rem;
+}
 .login-modal {
   position: fixed;
   top: 50%;
@@ -48,85 +104,173 @@ header {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  z-index: 100;
+  z-index: 1000;
+  width: 90%;
+  max-width: 400px;
 }
 
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
-}
-
-.product-card {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 15px;
-  text-align: center;
-}
-
-.product-card img {
-  max-width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 4px;
-}
-
-.management-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.products-list {
-  margin-top: 30px;
-}
-
-.product-item {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  margin-bottom: 15px;
-}
-
-.product-item img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 4px;
-}
-
-.product-actions {
-  margin-left: auto;
-  display: flex;
-  gap: 10px;
-}
-
-.product-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  max-width: 500px;
-  margin: 20px 0;
-}
-
-.product-form input {
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.product-form button {
+.login-modal button {
+  margin-top: 15px;
   padding: 8px 15px;
-  background: #007bff;
-  color: white;
+  background: #f0f0f0;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
-.product-form button[type="button"] {
-  background: #6c757d;
+.login-modal button:hover {
+  background: #e0e0e0;
+}
+
+.management-container{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logout-button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 15px;
+}
+
+.logout-button:hover {
+  background-color: #d32f2f;
+}
+
+/* Encabezado de gestión */
+.management-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.imagen{
+  object-fit: contain;
+  width: 100%;
+
+}
+
+/* Estilos para el formulario */
+.product-form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  resize: vertical;
+  min-height: 80px;
+  font-family: inherit;
+}
+
+/* Estilos para la tarjeta de producto */
+.product-description {
+  margin-top: 10px;
+  color: #555;
+  line-height: 1.4;
+}
+
+.description-toggle {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  padding: 0;
+  margin-top: 5px;
+  font-size: 0.9em;
+}
+
+.description-toggle:hover {
+  text-decoration: underline;
+}
+
+/* Estilos para el modal de pedido */
+.order-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.order-modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.order-modal-content h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.modal-buttons button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal-buttons button:first-child {
+  background-color: #f0f0f0;
+}
+
+.modal-buttons button:last-child {
+  background-color: #25D366;
+  color: white;
+}
+
+.whatsapp-button {
+  background-color: #25D366 !important;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Asegurar que el clic en la descripción no active el modal */
+.product-description {
+  pointer-events: none;
+}
+
+.description-toggle {
+  pointer-events: auto;
 }

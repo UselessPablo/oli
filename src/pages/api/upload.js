@@ -1,22 +1,39 @@
+// pages/api/upload.js
 import { put } from '@vercel/blob';
 
-export default async function upload(request) {
-    const formData = await request.formData();
-    const file = formData.get('file');
+export const config = {
+    api: {
+        bodyParser: false, // Necesario para manejar FormData
+    },
+};
 
-    if (!file) {
-        return new Response(JSON.stringify({ error: 'No file provided' }), {
-            status: 400,
-            headers: { 'Content-Type': 'application/json' },
-        });
+export default async function handler(req, res) {
+    if (req.method !== 'POST') {
+        return res.status(405).json({ error: 'Method not allowed' });
     }
 
-    const blob = await put(file.name, file, {
-        access: 'public',
-    });
+    try {
+        // Usamos un parser manual para FormData
+        const chunks = [];
+        for await (const chunk of req) {
+            chunks.push(chunk);
+        }
+        const buffer = Buffer.concat(chunks);
 
-    return new Response(JSON.stringify({ url: blob.url }), {
-        status: 200,
-        headers: { 'Content-Type': 'application/json' },
-    });
+        const blob = await put(`product-${Date.now()}.jpg`, buffer, {
+            access: 'public',
+            token: process.env.BLOB_READ_WRITE_TOKEN,
+        });
+
+        return res.status(200).json({
+            success: true,
+            url: blob.url,
+        });
+    } catch (error) {
+        console.error('Upload error:', error);
+        return res.status(500).json({
+            success: false,
+            error: error.message
+        });
+    }
 }

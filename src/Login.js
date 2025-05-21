@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from './context/AuthContext';
+import ProductManagement from './products/ProductManagement'
 
 const Login = () => {
     const [email, setEmail] = useState('oli@tudominio.com'); // Usa el email registrado
@@ -17,7 +18,7 @@ const Login = () => {
             setError('');
             setLoading(true);
             await login(email, password);
-            navigate('/dashboard');
+            navigate('/manage-products');
         } catch (error) {
             console.error("Error de autenticación:", error);
             setError('Credenciales incorrectas o problema de conexión');
